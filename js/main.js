@@ -1,7 +1,7 @@
 /* global Vue, _, Sortable */
 
 const originalData = {
-  version: '0.0.2',
+  version: '0.0.3',
   activeTab: 'shiny',
   pokemon: [
     {name: 'Bulbasaur', owned: false, dex: '1', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
@@ -33,12 +33,15 @@ const originalData = {
     {name: 'Geodude', owned: false, dex: '74', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
     {name: 'Graveller', owned: false, dex: '75', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
     {name: 'Golem', owned: false, dex: '76', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
+    {name: 'Farfetch\'d', owned: false, dex: '83', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Grimer', owned: false, dex: '88', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
     {name: 'Muk', owned: false, dex: '89', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
     {name: 'Shellder', owned: false, dex: '90', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Cloyster', owned: false, dex: '91', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Exeggutor', owned: false, dex: '103', shiny: false, shinyOwned: false, alolan: true, alolanOwned: false},
+    {name: 'Mr. Mine', owned: false, dex: '122', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Magmar', owned: false, dex: '126', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Tauros', owned: false, dex: '128', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Magikarp', owned: false, dex: '129', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Gyarados', owned: false, dex: '130', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Omanyte', owned: false, dex: '138', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
@@ -59,6 +62,8 @@ const originalData = {
     {name: 'Ampharos', owned: false, dex: '181', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Murkrow', owned: false, dex: '198', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Wobbuffet', owned: false, dex: '202', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Corsola', owned: false, dex: '222', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
+    {name: 'Heracross', owned: false, dex: '214', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Magby', owned: false, dex: '240', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Larvitar', owned: false, dex: '246', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Pupitar', owned: false, dex: '247', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
@@ -76,19 +81,28 @@ const originalData = {
     {name: 'Aggron', owned: false, dex: '306', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Meditite', owned: false, dex: '307', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Medicham', owned: false, dex: '308', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Volbeat', owned: false, dex: '313', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
+    {name: 'Illumise', owned: false, dex: '314', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Roselia', owned: false, dex: '315', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Wailmer', owned: false, dex: '320', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Wailord', owned: false, dex: '321', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Torkal', owned: false, dex: '324', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Swablu', owned: false, dex: '333', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Altaria', owned: false, dex: '334', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Zangoose', owned: false, dex: '335', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
+    {name: 'Seviper', owned: false, dex: '336', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
+    {name: 'Lunatone', owned: false, dex: '337', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
+    {name: 'Solrock', owned: false, dex: '338', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Shuppet', owned: false, dex: '353', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Banette', owned: false, dex: '354', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Duskull', owned: false, dex: '355', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Dusclops', owned: false, dex: '356', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Tropius', owned: false, dex: '357', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Absol', owned: false, dex: '359', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Wynaut', owned: false, dex: '360', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Snorunt', owned: false, dex: '361', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Glalie', owned: false, dex: '362', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
+    {name: 'Relicanth', owned: false, dex: '369', shiny: false, shinyOwned: false, alolan: false, alolanOwned: false, regional: true, regionalOwned: false},
     {name: 'Luvdisc', owned: false, dex: '370', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Kyogre', owned: false, dex: '382', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
   ],
@@ -137,6 +151,16 @@ const vm = new Vue({
         return pokemon.alolanOwned
       })
     },
+    regionalCount: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.regional
+      })
+    },
+    regionalCollected: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.regionalOwned
+      })
+    },
   },
   methods: {
     makeActive(val) {
@@ -151,6 +175,10 @@ const vm = new Vue({
     },
     toggleAlolanOwned(pokemon) {
       pokemon.alolanOwned = !pokemon.alolanOwned;
+      localStorage.setItem('data', JSON.stringify(data));
+    },
+    toggleRegionalOwned(pokemon) {
+      pokemon.regionalOwned = !pokemon.regionalOwned;
       localStorage.setItem('data', JSON.stringify(data));
     },
   },

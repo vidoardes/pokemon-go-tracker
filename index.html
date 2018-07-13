@@ -22,6 +22,7 @@
     </h1>
     <div class="stat">Shinys Collected: {{ shinyCollected.length }} of {{ shinyCount.length }}</div>
     <div class="stat">Alolan Collected: {{ alolanCollected.length }} of {{ alolanCount.length }}</div>
+    <div class="stat">Regional Collected: {{ regionalCollected.length }} of {{ regionalCount.length }}</div>
   </div>
 
   <div id="pokemon-selector">
@@ -30,10 +31,12 @@
          v-bind:class="{ active: activeTab == 'shiny' }">Shinies</a>
       <a href='#' class="tab" v-on:click="makeActive('alolan')"
          v-bind:class="{ active: activeTab == 'alolan' }">Alolan</a>
+      <a href='#' class="tab" v-on:click="makeActive('regional')"
+         v-bind:class="{ active: activeTab == 'regional' }">Regional</a>
     </div>
 
     <div class="tab-content">
-      <div class="pokemon"
+      <div class="pokemon shiny"
            v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex"
            v-if="pokemon.shiny"
            v-bind:class="{ owned: pokemon.shinyOwned }"
@@ -43,13 +46,23 @@
         <div class="info">{{ pokemon.name }}</div>
       </div>
 
-      <div class="pokemon"
+      <div class="pokemon alolan"
            v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex"
            v-if="pokemon.alolan"
            v-bind:class="{ owned: pokemon.alolanOwned }"
            v-on:click="toggleAlolanOwned(pokemon)">
         <div class="img"
              v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
+        <div class="info">{{ pokemon.name }}</div>
+      </div>
+
+      <div class="pokemon regional"
+           v-show="isActiveTab('regional')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex"
+           v-if="pokemon.regional"
+           v-bind:class="{ owned: pokemon.regionalOwned }"
+           v-on:click="toggleRegionalOwned(pokemon)">
+        <div class="img"
+             v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '.png)' } : {}]"></div>
         <div class="info">{{ pokemon.name }}</div>
       </div>
     </div>
