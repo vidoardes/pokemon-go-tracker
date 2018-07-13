@@ -29,21 +29,21 @@
     </div>
 
     <div class="content">
-      <div id="shiny" v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon">
+      <div id="shiny" v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex">
         <div class="pokemon"
              v-if="pokemon.shiny"
-             v-bind:class="{ owned: pokemon.owned }"
-             v-on:click="toggleOwned(pokemon)">
+             v-bind:class="{ owned: pokemon.shinyOwned }"
+             v-on:click="toggleShinyOwned(pokemon)">
           <div class="img"
                v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
           <div class="info">{{ pokemon.name }}</div>
         </div>
       </div>
-      <div id="alolan" v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon">
+      <div id="alolan" v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex">
         <div class="pokemon"
              v-if="pokemon.alolan"
-             v-bind:class="{ owned: pokemon.owned }"
-             v-on:click="toggleOwned(pokemon)">
+             v-bind:class="{ owned: pokemon.alolanOwned }"
+             v-on:click="toggleAlolanOwned(pokemon)">
           <div class="img"
                v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
           <div class="info">{{ pokemon.name }}</div>
