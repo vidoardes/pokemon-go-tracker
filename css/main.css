@@ -193,6 +193,7 @@ h1 .subHeader {
   border: solid 2px grey;
   padding: 5px;
   margin: 3px;
+  border-radius: 4px;
 }
 
 .pokemon.owned {

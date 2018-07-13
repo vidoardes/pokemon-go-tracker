@@ -171,6 +171,10 @@ const vm = new Vue({
     isActiveTab(val) {
       return this.activeTab === val;
     },
+    toggleOwned(pokemon) {
+      pokemon.owned = !pokemon.owned;
+      localStorage.setItem('data', JSON.stringify(data));
+    },
     toggleShinyOwned(pokemon) {
       pokemon.shinyOwned = !pokemon.shinyOwned;
       localStorage.setItem('data', JSON.stringify(data));
