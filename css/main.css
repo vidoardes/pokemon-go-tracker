@@ -157,7 +157,7 @@ textarea {
 .pokemon .img {
   width: 96px;
   height: 96px;
-  background-image: url('/pogo-tracker/img/sprites/pokemon/0.png');
+  background-image: url('/pokemon-go-tracker/img/sprites/pokemon/0.png');
   background-repeat: no-repeat;
   background-position: center;
 }
