@@ -116,7 +116,9 @@ if (savedData) {
   if (savedData.version === originalData.version) {
     data = _.cloneDeep(savedData);
   } else {
-    data = _.cloneDeep(originalData);
+    data = _.merge(_.cloneDeep(originalData), _.cloneDeep(savedData));
+    data.version = originalData.version
+    console.log(data)
   }
 } else {
   data = _.cloneDeep(originalData);
