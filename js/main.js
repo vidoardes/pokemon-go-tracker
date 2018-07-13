@@ -167,6 +167,7 @@ const vm = new Vue({
   methods: {
     makeActive(val) {
       this.activeTab = val;
+      localStorage.setItem('data', JSON.stringify(data));
     },
     isActiveTab(val) {
       return this.activeTab === val;
