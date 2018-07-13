@@ -1,0 +1,51 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Pokemon GO Shiny Tracker</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.1.0/css/all.css"
+        integrity="sha384-87DrmpqHRiY8hPLIr7ByqhPIywuSsjuQAfMXAE0sMUpY3BM7nXjf+mLIUSvhDArs" crossorigin="anonymous">
+</head>
+
+<body>
+<div id="app">
+  <div id="nav">
+    <a href='#' class="tab" v-on:click="makeActive('shiny')" v-bind:class="{ active: activeTab == 'shiny' }">Shinies</a>
+    <a href='#' class="tab" v-on:click="makeActive('alolan')" v-bind:class="{ active: activeTab == 'alolan' }">Alolan</a>
+  </div>
+
+  <div class="content">
+    <div id="shiny" v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon">
+      <div class="pokemon"
+           v-if="pokemon.shiny"
+           v-bind:class="{ owned: pokemon.owned }"
+           v-on:click="toggleOwned(pokemon)">
+        <div class="img"
+             v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pogo-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
+        <div class="info">{{ pokemon.name }}</div>
+      </div>
+    </div>
+    <div id="alolan" v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon">
+      <div class="pokemon"
+           v-if="pokemon.alolan"
+           v-bind:class="{ owned: pokemon.owned }"
+           v-on:click="toggleOwned(pokemon)">
+        <div class="img"
+             v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pogo-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
+        {{ pokemon.name }}
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+
+</html>
