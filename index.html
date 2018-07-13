@@ -45,6 +45,7 @@
         <div class="img"
              v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '.png)' } : {}]"></div>
         <div class="info">{{ pokemon.name }}</div>
+        <div class="dex-num">#{{ String(pokemon.dex).padStart(3,0) }}</div>
       </div>
 
       <div class="pokemon shiny"

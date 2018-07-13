@@ -194,6 +194,7 @@ h1 .subHeader {
   padding: 5px;
   margin: 3px;
   border-radius: 4px;
+  position: relative;
 }
 
 .pokemon.owned {
@@ -214,6 +215,14 @@ h1 .subHeader {
   font-weight: bold;
   text-align: center;
   width: 100%;
+}
+
+.pokemon .dex-num {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  font-size: 10px;
+  font-weight: 700;
 }
 
 /* ==========================================================================

@@ -2,7 +2,7 @@
 
 const originalData = {
   version: '0.0.3',
-  activeTab: 'shiny',
+  activeTab: 'all',
   pokemon: [
     {name: 'Bulbasaur', owned: false, dex: '1', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
     {name: 'Ivysaur', owned: false, dex: '2', shiny: true,  shinyOwned: false, alolan: false, alolanOwned: false},
