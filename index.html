@@ -27,7 +27,7 @@
            v-bind:class="{ owned: pokemon.owned }"
            v-on:click="toggleOwned(pokemon)">
         <div class="img"
-             v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pogo-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
+             v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
         <div class="info">{{ pokemon.name }}</div>
       </div>
     </div>
@@ -37,7 +37,7 @@
            v-bind:class="{ owned: pokemon.owned }"
            v-on:click="toggleOwned(pokemon)">
         <div class="img"
-             v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pogo-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
+             v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
         {{ pokemon.name }}
       </div>
     </div>
