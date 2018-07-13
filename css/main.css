@@ -35,7 +35,6 @@ body {
   line-height: 1.4285em;
   color: rgba(0, 0, 0, 0.87);
   font-smoothing: antialiased;
-  overflow-y: scroll;
 }
 
 /*
@@ -107,6 +106,14 @@ textarea {
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
+#app {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  grid-template-rows: 1fr;
+  width: 100vw;
+  height: 100vh;
+}
+
 h1 {
   border: none;
   margin: calc(2rem - .14285714em) 0 1rem;
@@ -129,15 +136,18 @@ h1 .subHeader {
 }
 
 #stats {
-  width: 20%;
   padding: 10px;
-  float: left;
+  background: #1b1c1d;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+#stats h1, #stats h1 .subHeader {
+  color: rgba(255, 255, 255, 0.9);
 }
 
 #pokemon-selector {
-  width: 80%;
-  padding: 10px 10px 10px 0;
-  float: left;
+  padding: 10px 10px 10px 10px;
+  overflow-y: auto;
 }
 
 #nav {
@@ -170,7 +180,6 @@ h1 .subHeader {
   border-color: #d4d4d5;
   font-weight: 700;
   margin-bottom: -1px;
-  -webkit-box-shadow: none;
   box-shadow: none;
   border-radius: 4px 4px 0 0 !important;
 }
@@ -178,12 +187,12 @@ h1 .subHeader {
 .tab-content {
   border: 1px solid #d4d4d5;
   margin-top: 0;
-  margin-bottom: 1rem;
   box-shadow: 0 1px 2px 0 rgba(34, 36, 38, .15);
   border-radius: 0 0 4px 4px;
   border-top: none;
   padding: 10px;
-  overflow: hidden;
+  overflow-y: scroll;
+  height: calc(100vh - 71px);
 }
 
 .pokemon {
