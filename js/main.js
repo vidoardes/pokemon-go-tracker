@@ -102,14 +102,11 @@ if (savedData) {
   if (savedData.version === originalData.version) {
     data = _.cloneDeep(savedData);
   } else {
-
     data = _.cloneDeep(originalData);
   }
 } else {
   data = _.cloneDeep(originalData);
 }
-
-// data = _.cloneDeep(originalData);
 
 // data.gamemasterData = fetch('https://raw.githubusercontent.com/pokemongo-dev-contrib/pokemongo-json-pokedex/master/output/pokemon.json')
 //   .then(function(response) {
@@ -119,7 +116,28 @@ if (savedData) {
 const vm = new Vue({
   el: '#app',
   data,
-
+  computed: {
+    shinyCount: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.shiny
+      })
+    },
+    shinyCollected: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.shiny && pokemon.owned
+      })
+    },
+    alolanCount: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.alolan
+      })
+    },
+    alolanCollected: function () {
+      return this.pokemon.filter(function (pokemon) {
+        return pokemon.alolan && pokemon.owned
+      })
+    },
+  },
   methods: {
     makeActive(val) {
       this.activeTab = val;
@@ -130,6 +148,6 @@ const vm = new Vue({
     toggleOwned(pokemon) {
       pokemon.owned = !pokemon.owned;
       localStorage.setItem('data', JSON.stringify(data));
-    }
+    },
   },
 });
