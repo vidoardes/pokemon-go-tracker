@@ -16,6 +16,10 @@
 <body>
 <div id="app">
   <div id="stats">
+    <h1>
+      Living Dex
+      <div class="subHeader">A living dex tracker for Pokemon GO</div>
+    </h1>
     <div class="stat">Shinys Collected: {{ shinyCollected.length }} of {{ shinyCount.length }}</div>
     <div class="stat">Alolan Collected: {{ alolanCollected.length }} of {{ alolanCount.length }}</div>
   </div>
@@ -28,33 +32,33 @@
          v-bind:class="{ active: activeTab == 'alolan' }">Alolan</a>
     </div>
 
-    <div class="content">
-      <div id="shiny" v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex">
-        <div class="pokemon"
-             v-if="pokemon.shiny"
-             v-bind:class="{ owned: pokemon.shinyOwned }"
-             v-on:click="toggleShinyOwned(pokemon)">
-          <div class="img"
-               v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
-          <div class="info">{{ pokemon.name }}</div>
-        </div>
+    <div class="tab-content">
+      <div class="pokemon"
+           v-show="isActiveTab('shiny')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex"
+           v-if="pokemon.shiny"
+           v-bind:class="{ owned: pokemon.shinyOwned }"
+           v-on:click="toggleShinyOwned(pokemon)">
+        <div class="img"
+             v-bind:style="[pokemon.dex != (null || '') ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/shiny/' + pokemon.dex + '.png)' } : {}]"></div>
+        <div class="info">{{ pokemon.name }}</div>
       </div>
-      <div id="alolan" v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex">
-        <div class="pokemon"
-             v-if="pokemon.alolan"
-             v-bind:class="{ owned: pokemon.alolanOwned }"
-             v-on:click="toggleAlolanOwned(pokemon)">
-          <div class="img"
-               v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
-          <div class="info">{{ pokemon.name }}</div>
-        </div>
+
+      <div class="pokemon"
+           v-show="isActiveTab('alolan')" v-for="(pokemon, index) in pokemon" :key="pokemon.dex"
+           v-if="pokemon.alolan"
+           v-bind:class="{ owned: pokemon.alolanOwned }"
+           v-on:click="toggleAlolanOwned(pokemon)">
+        <div class="img"
+             v-bind:style="[pokemon.dex != null ? { backgroundImage: 'url(/pokemon-go-tracker/img/sprites/pokemon/' + pokemon.dex + '-alola.png)' } : {}]"></div>
+        <div class="info">{{ pokemon.name }}</div>
       </div>
     </div>
   </div>
+</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
-  <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
-  <script src="js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue"></script>
+<script src="https://cdn.jsdelivr.net/npm/lodash@4.17.4/lodash.min.js"></script>
+<script src="js/main.js"></script>
 </body>
 
 </html>
